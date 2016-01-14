@@ -5,5 +5,10 @@
     * added new methods for name and implementation swap
     * update tests
 
+### 0.3.0 (2016-01-14)
+    * implement ArrayAccess interface for nicer API and more functionality
+    * update container interface
+    * update tests
+
 
 

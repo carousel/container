@@ -2,8 +2,7 @@
     "name": "carousel/container",
     "description": "Dependency Injection container for PHP projects",
     "keywords": [
-        "carousel",
-        "container"
+        "di-container"
     ],
     "homepage": "http://larabal.com",
     "license": "MIT",
@@ -25,7 +24,11 @@
     "autoload": {
         "psr-4": {
             "Carousel\\": "src"
-        }
+        },
+        "classmap": [
+            "tests/Car.php",
+            "tests/NewCar.php"
+        ]
     },
     "scripts": {
         "test": "phpunit"
