@@ -3,6 +3,7 @@
 namespace Carousel;
 
 use ArrayAccess;
+use Carousel\Exceptions\BindingNotFoundException;
 
 class Container implements ContainerInterface,ArrayAccess
 {
@@ -27,7 +28,11 @@ class Container implements ContainerInterface,ArrayAccess
      */
     public function resolve($name)
     {
-        return $this->bindings[$name]();
+        if (isset($this->bindings[$name])) {
+            return $this->bindings[$name]();
+        } else {
+            throw new BindingNotFoundException();
+        }
     }
     /**
      * Remove binding from container.
@@ -99,7 +104,11 @@ class Container implements ContainerInterface,ArrayAccess
      */
     public function offsetGet($name)
     {
-        return $this->bindings[$name]();
+        if (isset($this->bindings[$name])) {
+            return $this->bindings[$name]();
+        } else {
+            throw new BindingNotFoundException();
+        }
     }
     /**
      * Bind into the container.

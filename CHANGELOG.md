@@ -1,3 +1,5 @@
+##CHANGELOG
+
 ### 0.1.0 (2016-01-13)
     * initial release
     
@@ -9,6 +11,11 @@
     * implement ArrayAccess interface for nicer API and more functionality
     * update container interface
     * update tests
+
+### 0.4.0 (2016-01-17)
+    * add BindingNotFoundException
+    * test
+    * update readme.md
 
 
 
