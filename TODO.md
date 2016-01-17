@@ -1,2 +1,3 @@
 ###TODO
-* Create exceptions
+* remove phpunit settings (.idea)
+* semver correct settings
