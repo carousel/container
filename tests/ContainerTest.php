@@ -32,7 +32,9 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
     public function binding_key_can_be_swapped()
     {
         //using ArrayAccess interface
-        $this->container['car'] = function () { return new Car(); };
+        $this->container['car'] = function () {
+            return new Car();
+        };
         $this->container->swapKey('car', 'new_car');
         $new_car = $this->container['new_car'];
         $this->assertTrue($new_car instanceof Car);
@@ -47,7 +49,9 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $this->container->bind('car', function () {
             return new Car();
         });
-        $this->container->swapConcrete('car', function () { return new NewCar();});
+        $this->container->swapConcrete('car', function () {
+            return new NewCar();
+        });
         $car = $this->container['car'];
         $this->assertTrue($car instanceof NewCar);
         $this->assertTrue($this->container->isBound('car'));
@@ -58,7 +62,9 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
      */
     public function binding_exists()
     {
-        $this->container['car'] = function () { return new Car(); };
+        $this->container['car'] = function () {
+            return new Car();
+        };
         $this->assertTrue($this->container->isBound('car'));
         //$this->container->remove('car');
     }
@@ -68,7 +74,9 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
      */
     public function binding_can_be_removed()
     {
-        $this->container['car'] = function () { return new Car(); };
+        $this->container['car'] = function () {
+            return new Car();
+        };
         $this->assertTrue($this->container->isBound('car'));
         $this->container->remove('car');
         $this->assertNotTrue($this->container->isBound('car'));

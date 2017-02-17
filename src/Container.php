@@ -5,7 +5,7 @@ namespace Carousel;
 use ArrayAccess;
 use Carousel\Exceptions\BindingNotFoundException;
 
-class Container implements ContainerInterface,ArrayAccess
+class Container implements ContainerInterface, ArrayAccess
 {
     public $bindings = [];
     /**
