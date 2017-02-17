@@ -6,5 +6,5 @@ use Exception;
 
 class BindingNotFoundException extends Exception
 {
-    protected $message = 'Container binding could not be found';
+    protected $message = 'Container Binding Could Not Be Found!!!';
 }
