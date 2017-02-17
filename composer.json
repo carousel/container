@@ -24,11 +24,7 @@
     "autoload": {
         "psr-4": {
             "Carousel\\": "src"
-        },
-        "classmap": [
-            "tests/Car.php",
-            "tests/NewCar.php"
-        ]
+        }
     },
     "scripts": {
         "test": "phpunit"
