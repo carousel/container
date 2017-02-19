@@ -1,8 +1,6 @@
 <?php
 
 use Carousel\Container;
-use Tests\NewCar;
-use Tests\Car;
 
 class ContainerTest extends \PHPUnit_Framework_TestCase
 {
@@ -12,9 +10,9 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-    * @test
-    * Test that object can be bound and resolved out of container
-    */
+     * @test
+     * Test that object can be bound and resolved out of container
+     */
     public function object_can_be__bound_in_container()
     {
         $this->container->bind('car', function () {
@@ -28,9 +26,9 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($this->container->isBound('car'), 1);
     }
     /**
-    * @test
-    * Test that binding key can be changed
-    */
+     * @test
+     * Test that binding key can be changed
+     */
     public function binding_key_can_be_swapped()
     {
         //using ArrayAccess interface
@@ -43,9 +41,9 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->container->isBound('new_car'));
     }
     /**
-    * @test
-    * Test that binding implementation can be changed
-    */
+     * @test
+     * Test that binding implementation can be changed
+     */
     public function binding_implementation_can_be_swapped()
     {
         $this->container->bind('car', function () {
@@ -59,9 +57,9 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->container->isBound('car'));
     }
     /**
-    * @test
-    * Test that binding exists
-    */
+     * @test
+     * Test that binding exists
+     */
     public function binding_exists()
     {
         $this->container['car'] = function () {
@@ -71,9 +69,9 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         //$this->container->remove('car');
     }
     /**
-    * @test
-    * Test that binding can be removed
-    */
+     * @test
+     * Test that binding can be removed
+     */
     public function binding_can_be_removed()
     {
         $this->container['car'] = function () {
@@ -82,18 +80,5 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->container->isBound('car'));
         $this->container->remove('car');
         $this->assertNotTrue($this->container->isBound('car'));
-    }
-    /**
-    * @test
-    * Test that binding can be removed
-    */
-    public function exception_is_thrown()
-    {
-        try {
-            $this->container['car'];
-        } catch (Exception $e) {
-            $this->assertEquals(get_class($e), 'Carousel\Exceptions\BindingNotFoundException');
-            $this->assertEquals($e->getMessage(), 'Container Binding Could Not Be Found!!!');
-        }
     }
 }
