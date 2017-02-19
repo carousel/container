@@ -13,6 +13,7 @@ class Container implements ContainerInterface, ArrayAccess
      *
      * @param string
      * @param callable
+     * @return void
      */
     public function bind($name, $callback)
     {
@@ -38,6 +39,7 @@ class Container implements ContainerInterface, ArrayAccess
      * Remove binding from container.
      *
      * @param string
+     * @return void
      */
     public function remove($name)
     {
@@ -60,6 +62,7 @@ class Container implements ContainerInterface, ArrayAccess
      *
      * @param string
      * @param string
+     * @return void
      */
     public function swapKey($old_name, $new_name)
     {
