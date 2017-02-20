@@ -32,9 +32,9 @@ $car = $this->container['car'];
 $car->setMake('VW');
 
 //swap binding key
-$this->container->swapKey('car', 'new_car');
+$this->container->swapKey('car', 'newCar');
 
 //resolve
-$new_car = $this->container['new_car'];
+$newCar = $this->container['newCar'];
 
 ```

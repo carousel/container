@@ -1,6 +1,8 @@
 <?php
 
 use Carousel\Container;
+use Tests\Car;
+use Tests\NewCar;
 
 class ContainerTest extends \PHPUnit_Framework_TestCase
 {
@@ -35,10 +37,10 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $this->container['car'] = function () {
             return new Car();
         };
-        $this->container->swapKey('car', 'new_car');
-        $new_car = $this->container['new_car'];
-        $this->assertTrue($new_car instanceof Car);
-        $this->assertTrue($this->container->isBound('new_car'));
+        $this->container->swapKey('car', 'newCar');
+        $newCar = $this->container['newCar'];
+        $this->assertTrue($newCar instanceof Car);
+        $this->assertTrue($this->container->isBound('newCar'));
     }
     /**
      * @test
@@ -66,7 +68,6 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
             return new Car();
         };
         $this->assertTrue($this->container->isBound('car'));
-        //$this->container->remove('car');
     }
     /**
      * @test

@@ -10,7 +10,7 @@ interface ContainerInterface
      * @param string
      * @param closure
      */
-    public function bind($name, $callback);
+    public function bind($key, callable $resolver);
 
     /**
      * Resolve bindings from container.
@@ -19,7 +19,7 @@ interface ContainerInterface
      *
      * @return object
      */
-    public function resolve($name);
+    public function resolve($key);
 
     /**
      * Check if object is bound in container.
@@ -28,7 +28,7 @@ interface ContainerInterface
      *
      * @return bool
      */
-    public function isBound($name);
+    public function isBound($key);
     /**
      * Remove binding from  container.
      *
@@ -36,7 +36,7 @@ interface ContainerInterface
      *
      * @return bool
      */
-    public function remove($name);
+    public function remove($key);
     /**
      * Swap key (alias) in container.
      *
@@ -44,7 +44,7 @@ interface ContainerInterface
      *
      * @return bool
      */
-    public function swapKey($old_name, $new_name);
+    public function swapKey($key, $newKey);
     /**
      * Swap implementation in container.
      *
@@ -52,5 +52,5 @@ interface ContainerInterface
      *
      * @return bool
      */
-    public function swapConcrete($name, $callback);
+    public function swapConcrete($key, callable $resolver);
 }

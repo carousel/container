@@ -1,2 +1,4 @@
 vendor
 build
+src/.php_cs.cache
+tests/.php_cs.cache

@@ -17,5 +17,10 @@
     * test
     * update readme.md
 
+### 0.5.0 (2017-02-20)
+    * renaming function arguments
+    * namespace tests
+    * improve tests
+
 
 

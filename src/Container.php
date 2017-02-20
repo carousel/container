@@ -13,11 +13,10 @@ class Container implements ContainerInterface, ArrayAccess
      *
      * @param string
      * @param callable
-     * @return void
      */
-    public function bind($name, $callback)
+    public function bind($key, callable $resolver)
     {
-        $this->bindings[$name] = $callback;
+        $this->bindings[$key] = $resolver;
     }
 
     /**
@@ -27,10 +26,10 @@ class Container implements ContainerInterface, ArrayAccess
      *
      * @return object
      */
-    public function resolve($name)
+    public function resolve($key)
     {
-        if (isset($this->bindings[$name])) {
-            return $this->bindings[$name]();
+        if (isset($this->bindings[$key])) {
+            return $this->bindings[$key]();
         } else {
             throw new BindingNotFoundException();
         }
@@ -39,11 +38,10 @@ class Container implements ContainerInterface, ArrayAccess
      * Remove binding from container.
      *
      * @param string
-     * @return void
      */
-    public function remove($name)
+    public function remove($key)
     {
-        $this->offsetUnset($name);
+        $this->offsetUnset($key);
     }
 
     /**
@@ -53,23 +51,22 @@ class Container implements ContainerInterface, ArrayAccess
      *
      * @return bool
      */
-    public function isBound($name)
+    public function isBound($key)
     {
-        return $this->offsetExists($name);
+        return $this->offsetExists($key);
     }
     /**
      * Swap binding key in container.
      *
      * @param string
      * @param string
-     * @return void
      */
-    public function swapKey($old_name, $new_name)
+    public function swapKey($key, $newKey)
     {
-        if (array_key_exists($old_name, $this->bindings)) {
-            $backup[$new_name] = $this->bindings[$old_name];
-            unset($this->bindings[$old_name]);
-            $this->bindings[$new_name] = $backup[$new_name];
+        if (array_key_exists($key, $this->bindings)) {
+            $backup[$key] = $this->bindings[$key];
+            unset($this->bindings[$key]);
+            $this->bindings[$newKey] = $backup[$key];
         }
     }
     /**
@@ -79,10 +76,10 @@ class Container implements ContainerInterface, ArrayAccess
      * @param string
      * @param callable
      */
-    public function swapConcrete($name, $callback)
+    public function swapConcrete($key, callable $resolver)
     {
-        if (array_key_exists($name, $this->bindings)) {
-            $this->bindings[$name] = $callback;
+        if (array_key_exists($key, $this->bindings)) {
+            $this->bindings[$key] = $resolver;
         }
     }
     /**
@@ -92,10 +89,10 @@ class Container implements ContainerInterface, ArrayAccess
      *
      * @return bool
      */
-    public function offsetExists($name)
+    public function offsetExists($key)
     {
-        if (array_key_exists($name, $this->bindings)) {
-            return array_key_exists($name, $this->bindings);
+        if (array_key_exists($key, $this->bindings)) {
+            return array_key_exists($key, $this->bindings);
         }
     }
     /**
@@ -105,10 +102,10 @@ class Container implements ContainerInterface, ArrayAccess
      *
      * @return bool
      */
-    public function offsetGet($name)
+    public function offsetGet($key)
     {
-        if (isset($this->bindings[$name])) {
-            return $this->bindings[$name]();
+        if (isset($this->bindings[$key])) {
+            return $this->bindings[$key]();
         } else {
             throw new BindingNotFoundException();
         }
@@ -117,11 +114,11 @@ class Container implements ContainerInterface, ArrayAccess
      * Bind into the container.
      *
      * @param string
-     * @param callable
+     * @param object | value
      */
-    public function offsetSet($name, $callback)
+    public function offsetSet($key, $value)
     {
-        $this->bindings[$name] = $callback;
+        $this->bindings[$key] = $value;
     }
     /**
      * Remove binding from the container.
@@ -131,8 +128,8 @@ class Container implements ContainerInterface, ArrayAccess
      *
      * @return bool
      */
-    public function offsetUnset($name)
+    public function offsetUnset($key)
     {
-        unset($this->bindings[$name]);
+        unset($this->bindings[$key]);
     }
 }
