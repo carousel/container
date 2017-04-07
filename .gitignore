@@ -1,3 +1,5 @@
 vendor
 build
 /tests
+.idea
+.php_cs.cache
