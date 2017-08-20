@@ -13,9 +13,10 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     *
      * Test that object can be bound and resolved out of container
      */
-    public function object_can_be__bound_in_container()
+    public function objectCanBeBoundToContainer()
     {
         $this->container->bind('car', function () {
             return new Car();
@@ -31,7 +32,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
      * @test
      * Test that binding key can be changed
      */
-    public function binding_key_can_be_swapped()
+    public function bindingKeyCanBeSwapped()
     {
         //using ArrayAccess interface
         $this->container['car'] = function () {
@@ -46,7 +47,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
      * @test
      * Test that binding implementation can be changed
      */
-    public function binding_implementation_can_be_swapped()
+    public function bindingImplementationCanBeSwapped()
     {
         $this->container->bind('car', function () {
             return new Car();
@@ -62,7 +63,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
      * @test
      * Test that binding exists
      */
-    public function binding_exists()
+    public function bindingExists()
     {
         $this->container['car'] = function () {
             return new Car();
@@ -73,7 +74,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
      * @test
      * Test that binding can be removed
      */
-    public function binding_can_be_removed()
+    public function bindingCanBeRemoved()
     {
         $this->container['car'] = function () {
             return new Car();
