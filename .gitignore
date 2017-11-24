@@ -1,4 +1,5 @@
 vendor
 build
+coverage
 src/.php_cs.cache
 tests/.php_cs.cache
